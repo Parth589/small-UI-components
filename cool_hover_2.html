@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .object {
+            width: 250px;
+            height: 50px;
+            position: relative;
+            overflow-x: hidden;
+
+            --step-0-delay: 0s;
+            --step-1-delay: .5s;
+            --step-2-delay: 1s;
+            --step-3-delay: 1.5s;
+        }
+
+        *::after,
+        *::before {
+            position: absolute;
+            content: '';
+            background-color: gray;
+            background-color: red;
+            /* height: 100%;
+            width: 100%; */
+        }
+
+        /* .object:hover {
+            display: none;
+        } */
+
+        *::after {
+            height: 2px;
+        }
+
+        *::before {
+            width: 2px;
+        }
+
+        /* left line */
+        .object::before {
+            top: 0;
+            left: 0;
+            transition: height 1s;
+            height: 0%;
+        }
+
+        /* bottom line */
+        .object::after {
+            bottom: 0;
+            left: 0;
+            width: 0%;
+            transition: width 1s;
+
+        }
+
+        /* right line */
+        .object-inner::before {
+            top: 0;
+            right: 0;
+            height: 0%;
+            transition: height 1s;
+
+        }
+
+        /* top line */
+        .object-inner::after {
+            top: 0;
+            right: 0;
+            width: 0%;
+            transition: width 1s;
+
+        }
+
+        .object:hover::after {
+            width: 100%;
+        }
+
+        .object:hover.object-inner::before {
+            height: 100%;
+        }
+
+        .object:hover.object-inner::after {
+            width: 100%;
+        }
+
+        .object:hover::before {
+            height: 100%;
+        }
+
+
+
+
+        /* temp styles (Not so important) */
+        .object-inner {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        * {
+            outline: 2px solid lime;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="object">
+        <div class="object-inner">
+            Abc
+        </div>
+    </div>
+</body>
+
+</html>

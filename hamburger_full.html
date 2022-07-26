@@ -1,0 +1,99 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .hamburger-menu {
+            --menu-width: 500px;
+            --menu-height: 100vh;
+            --trigger-icon-size: 35px;
+            --menu-background: red;
+            --trigger-background: red;
+            position: absolute;
+            left: calc(100% - var(--trigger-icon-size));
+            display: flex;
+        }
+
+        .hamburger-menu-list {
+            background-color: var(--menu-background);
+            width: var(--menu-width);
+            height: var(--menu-height);
+            list-style-type: none;
+            margin: 0;
+        }
+
+        .hamburger-menu[visible='true'] {
+            animation: menu-open 1s 1 forwards;
+        }
+
+        .hamburger-menu[visible='false'] {
+            animation: menu-close 1s 1 forwards;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        #hamburger-menu-trigger {
+            width: var(--trigger-icon-size);
+            height: var(--trigger-icon-size);
+            cursor: pointer;
+            background-color: var(--trigger-background);
+            /* margin-top: 30px; */
+            /* Add space on top of trigger */
+        }
+
+        @keyframes menu-open {
+            from {
+                left: calc(100% - var(--trigger-icon-size));
+            }
+
+            to {
+                left: calc(100% - var(--trigger-icon-size) - var(--menu-width));
+            }
+        }
+
+        @keyframes menu-close {
+            from {
+                left: calc(100% - var(--trigger-icon-size) - var(--menu-width));
+            }
+
+            to {
+                left: calc(100% - var(--trigger-icon-size));
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="hamburger-menu" id="hamburger-menu" visible="false">
+            <img src="list.svg" alt="hamburger-menu-trigger" id="hamburger-menu-trigger">
+            <ul class="hamburger-menu-list">
+                <li>no 1</li>
+                <li>no 2</li>
+                <li>no 3</li>
+                <li>no 4</li>
+                <li>no 5</li>
+            </ul>
+
+        </div>
+    </header>
+</body>
+<script>
+    let trigger = document.getElementById("hamburger-menu-trigger");
+    let menu = document.getElementById("hamburger-menu");
+    trigger.addEventListener("click", () => {
+        menu.setAttribute("visible", !menu.getAttribute("visible"));
+    })
+</script>
+
+</html>
