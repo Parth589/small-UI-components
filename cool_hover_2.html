@@ -12,32 +12,32 @@
             height: 50px;
             position: relative;
             overflow-x: hidden;
-
-            --step-0-delay: 0s;
-            --step-1-delay: .5s;
-            --step-2-delay: 1s;
-            --step-3-delay: 1.5s;
+            --transition-duration: 1s;
         }
 
-        *::after,
-        *::before {
+        .object-inner {
+            height: 100%;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .object::after,
+        .object::before,
+        .object-inner::after,
+        .object-inner::before {
             position: absolute;
             content: '';
             background-color: gray;
             background-color: red;
-            /* height: 100%;
-            width: 100%; */
         }
 
-        /* .object:hover {
-            display: none;
-        } */
-
-        *::after {
+        .object::after,
+        .object-inner::after {
             height: 2px;
         }
 
-        *::before {
+        .object::before,
+        .object-inner::before {
             width: 2px;
         }
 
@@ -53,38 +53,36 @@
         .object::after {
             bottom: 0;
             left: 0;
-            width: 0%;
             transition: width 1s;
+            width: 0%;
 
         }
 
         /* right line */
         .object-inner::before {
-            top: 0;
+            bottom: 0;
             right: 0;
-            height: 0%;
             transition: height 1s;
-
+            height: 0%;
         }
 
         /* top line */
         .object-inner::after {
             top: 0;
             right: 0;
-            width: 0%;
             transition: width 1s;
-
+            width: 0%;
         }
 
         .object:hover::after {
             width: 100%;
         }
 
-        .object:hover.object-inner::before {
+        .object:hover .object-inner::before {
             height: 100%;
         }
 
-        .object:hover.object-inner::after {
+        .object:hover .object-inner::after {
             width: 100%;
         }
 
@@ -92,21 +90,14 @@
             height: 100%;
         }
 
-
-
-
         /* temp styles (Not so important) */
         .object-inner {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100%;
-            width: 100%;
-            box-sizing: border-box;
         }
 
         * {
-            outline: 2px solid lime;
             margin: 0;
             padding: 0;
         }

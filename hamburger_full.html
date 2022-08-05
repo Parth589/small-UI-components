@@ -92,7 +92,11 @@
     let trigger = document.getElementById("hamburger-menu-trigger");
     let menu = document.getElementById("hamburger-menu");
     trigger.addEventListener("click", () => {
-        menu.setAttribute("visible", !menu.getAttribute("visible"));
+        console.log("Triggered");
+        ;
+        let prev_value = (menu.getAttribute("visible") == 'true') ? true : false;
+        console.log({ prev_value });
+        menu.setAttribute("visible", !(prev_value));
     })
 </script>
 
